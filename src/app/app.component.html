@@ -1,0 +1,53 @@
+<div class="mainDIv">
+
+
+  <div class="container">
+    <div class="weather-side">
+      <div class="weather-gradient"></div>
+      <div class="date-container">
+        <h2 class="date-dayname">{{TodayDate | date:'EEEE'}}</h2><span class="date-day">{{TodayDate | date:'MMM y'}}</span><i class="location-icon" data-feather="map-pin"></i><span class="location">{{cityName}}</span>
+      </div>
+      <div class="weather-container"><i class="weather-icon" data-feather="sun"></i>
+        
+        
+        <h1 class="weather-temp"  *ngIf="showCel">{{transform(weatherData.main.temp-273.15)}}°C</h1>
+       
+        <h1 class="weather-temp" *ngIf="showFar">{{transform((weatherData.main.temp-273.15)*1.8+32)}}°F</h1>
+       
+        <h3 class="weather-desc">{{weatherData.weather[0].description}}</h3>
+        
+        
+
+        
+      </div>
+    </div>
+    <div class="info-side">
+      <div class="today-info-container">
+        <div class="today-info">
+         
+          <div class="humidity"> <span class="title">HUMIDITY</span><span class="value">{{weatherData.main.humidity}} %</span>
+            <div class="clear"></div>
+          </div>
+          <div class="wind"> <span class="title">WIND</span><span class="value">{{weatherData.wind.speed}} km/h</span>
+            <div class="clear"></div>
+          </div>
+          <div>
+            
+          </div>
+        </div>
+      </div>
+      
+      <div class="location-container">
+        <button class="location-button" type="button" (click)="changeLocation()"> <i data-feather="map-pin"></i><span>Change location</span></button>
+      </div>
+      <div class="location-right">
+        <input type="text" (change)="getWeatherDataByCity()" id="CityName" class="form-control" text-align="center" placeholder="enter city name">
+      </div>
+      <div class="example-button-row">
+        <button class="button-1" (click)="disableFar()">Farenheit</button>
+        <button  class="button-2" (click)="DisableCel()">Celcius</button>
+      
+        </div>
+    </div>
+  </div>
+  </div>
